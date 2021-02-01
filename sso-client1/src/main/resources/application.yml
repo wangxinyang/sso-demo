@@ -1,0 +1,18 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /client1
+
+security:
+  oauth2:
+    client:
+      client-id: client1
+      client-secret: client1
+      user-authorization-uri: http://localhost:8082/server/oauth/authorize
+      access-token-uri: http://localhost:8082/server/oauth/token
+    resource:
+      jwt:
+        key-uri: http://localhost:8082/server/oauth/token_key
+      #下面这两项必须配置 否则启动报错 因为springboot2和security5 oauth2的原因
+      user-info-uri: http://localhost:8082/server/user
+      token-info-uri: http://localhost:8082/server/oauth/check_token
